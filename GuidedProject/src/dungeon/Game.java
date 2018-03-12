@@ -25,7 +25,7 @@ public class Game {
 		{
 			for(int j = 0; j < 10; j++)
 			{
-				if(board[i][j]=='H')
+				if(board[i][j]=='H' || board[i][j] == 'K')
 				{
 					pos[0] = i; 
 					pos[1] = j;
@@ -34,6 +34,8 @@ public class Game {
 		}
 		return pos;
 	}
+
+
 
 	public static void checkDirection(char input, int[] pos, char[][]board)
 	{
@@ -49,6 +51,12 @@ public class Game {
 				board[x][y-1]='H';
 				board[x][y]=' ';
 			}
+			else
+				if(atLever(x,y-1, board))
+				{
+					board[x][y-1]='K';
+					board[x][y]=' ';
+				}
 
 		}
 		if(input == 'S' || input == 's')
@@ -57,6 +65,12 @@ public class Game {
 				board[x+1][y]='H';
 				board[x][y]=' ';
 			}
+			else
+				if(atLever(x+1,y, board))
+				{
+					board[x+1][y]='K';
+					board[x][y]=' ';
+				}
 
 		}
 		if(input == 'W' || input == 'w')
@@ -65,6 +79,12 @@ public class Game {
 				board[x-1][y]='H';
 				board[x][y]=' ';
 			}
+			else
+				if(atLever(x-1,y, board))
+				{
+					board[x-1][y]='K';
+					board[x][y]=' ';
+				}
 
 		}
 		if(input == 'D' || input == 'd')
@@ -73,6 +93,12 @@ public class Game {
 				board[x][y+1]='H';
 				board[x][y]=' ';
 			}
+			else
+				if(atLever(y+1,y, board))
+				{
+					board[x+1][y]='K';
+					board[x][y]=' ';
+				}
 
 
 		}
@@ -93,31 +119,38 @@ public class Game {
 			{'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'}
 
 		};
-		
+
 		while(true)
 		{
 			Scanner key = new Scanner(System.in);
 			char key2 = '1';
-			
+
 			while (true) 
 			{
 				printBoard(board);
 				key2 = key.next().charAt(0);
-				
+
 				if(key2 == 'q' || key2 == 'Q') // Para sair TODO: ver porque esta a dar erro ao pressionar esta tecla
 					break;
-				
-				
+
+
 				int pos[] = getPos(board);
 				checkDirection(key2, pos, board);
 				printBoard(board);
-				
+
 			}
 			key.close();
-	
-		}
-	
 
+		}
+
+	}
+
+	public static boolean atLever(int x, int y, char[][]board)
+	{
+		if(board[x][y] == 'k')
+			return true;
+		else
+			return false;
 	}
 
 }
