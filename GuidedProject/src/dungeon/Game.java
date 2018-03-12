@@ -1,9 +1,8 @@
 package dungeon;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Game {
-
+	
 	public static void printBoard(char[][] board) {
 		System.out.println();
 		for(int i = 0; i < 10; i++)
@@ -36,7 +35,6 @@ public class Game {
 	}
 
 
-
 	public static void checkDirection(char input, int[] pos, char[][]board)
 	{
 		int x= pos[0];
@@ -46,7 +44,7 @@ public class Game {
 
 
 		if(input == 'A' || input == 'a')
-		{
+		{	
 			if(board[x][y-1]==' '){
 				board[x][y-1]='H';
 				board[x][y]=' ';
@@ -119,6 +117,8 @@ public class Game {
 			{'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'}
 
 		};
+	// TODO: lever esta a desaparecer, why? 
+	// movimentos do guarda
 
 		while(true)
 		{
@@ -135,6 +135,11 @@ public class Game {
 
 
 				int pos[] = getPos(board);
+				if(adjacentGuard(pos[0], pos[1], board))
+				{
+					System.out.println("GAME OVER!");
+					return;
+				}
 				checkDirection(key2, pos, board);
 				printBoard(board);
 
@@ -152,5 +157,21 @@ public class Game {
 		else
 			return false;
 	}
+	
+	public static boolean adjacentGuard(int x, int y, char[][]board)
+	{
+		if(board[x][y] == 'H' && board[x+1][y] == 'G')
+			return true;
+		else if(board[x][y] == 'H' && board[x-1][y] == 'G')
+			return true;
+		else if(board[x][y] == 'H' && board[x][y+1] == 'G')
+			return true;
+		else if(board[x][y] == 'H' && board[x][y-1] == 'G')
+			return true;
+		else
+			return false;
+	}
+	
+	
 
 }
