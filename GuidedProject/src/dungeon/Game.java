@@ -2,7 +2,7 @@ package dungeon;
 import java.util.Scanner;
 
 public class Game {
-	
+
 	public static void printBoard(char[][] board) {
 		System.out.println();
 		for(int i = 0; i < 10; i++)
@@ -39,8 +39,6 @@ public class Game {
 	{
 		int x= pos[0];
 		int y= pos[1];
-		System.out.println(pos[0]);
-		System.out.println(pos[1]);
 
 
 		if(input == 'A' || input == 'a')
@@ -117,38 +115,38 @@ public class Game {
 			{'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'}
 
 		};
-	// TODO: lever esta a desaparecer, why? 
-	// movimentos do guarda
+		// TODO: lever esta a desaparecer, why? 
+		// movimentos do guarda
 
-		while(true)
+		Scanner key = new Scanner(System.in);
+		char key2 = '1';
+
+
+		while (true) 
 		{
-			Scanner key = new Scanner(System.in);
-			char key2 = '1';
+			printBoard(board);
+			key2 = key.next().charAt(0);
 
-			while (true) 
+			if(key2 == 'q' || key2 == 'Q') // Para sair TODO: ver porque esta a dar erro ao pressionar esta tecla
+				break;
+
+
+			int pos[] = getPos(board);
+			if(adjacentGuard(pos[0], pos[1], board))
 			{
-				printBoard(board);
-				key2 = key.next().charAt(0);
-
-				if(key2 == 'q' || key2 == 'Q') // Para sair TODO: ver porque esta a dar erro ao pressionar esta tecla
-					break;
-
-
-				int pos[] = getPos(board);
-				if(adjacentGuard(pos[0], pos[1], board))
-				{
-					System.out.println("GAME OVER!");
-					return;
-				}
-				checkDirection(key2, pos, board);
-				printBoard(board);
-
+				System.out.println("GAME OVER!");
+				key.close();
+				return;
 			}
-			key.close();
+			checkDirection(key2, pos, board);
+			
 
 		}
+		key.close();
 
 	}
+
+
 
 	public static boolean atLever(int x, int y, char[][]board)
 	{
@@ -157,7 +155,7 @@ public class Game {
 		else
 			return false;
 	}
-	
+
 	public static boolean adjacentGuard(int x, int y, char[][]board)
 	{
 		if(board[x][y] == 'H' && board[x+1][y] == 'G')
@@ -171,7 +169,7 @@ public class Game {
 		else
 			return false;
 	}
-	
-	
+
+
 
 }
