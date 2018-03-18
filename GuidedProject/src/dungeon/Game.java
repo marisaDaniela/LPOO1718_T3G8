@@ -5,6 +5,9 @@ import java.util.Scanner;
 public class Game {
 	
 	static int flag=0;
+	static char hero='H';
+	static int game_flag=1;
+	static int flag_move=0;
 
 	public static void printBoard(char[][] board, int size) {
 		System.out.println();
@@ -21,11 +24,11 @@ public class Game {
 	}
 
 
-	public static int[] getPos(char[][] board, char mover){
+	public static int[] getPos(char[][] board, char mover, int size){
 		int[] pos = new int[2];
-		for(int i = 0; i < 10; i++)
+		for(int i = 0; i < size; i++)
 		{
-			for(int j = 0; j < 10; j++)
+			for(int j = 0; j < size; j++)
 			{
 				if(board[i][j]==mover)
 				{
@@ -49,6 +52,17 @@ public class Game {
 			if(board[x][y-1]==' '){
 				board[x][y-1]=mover;
 				board[x][y]=' ';
+			}else if(mover=='O' && board[x][y-1]=='k') {
+				board[x][y-1]='$';
+				board[x][y]=' ';
+			}else if(mover==hero && board[x][y-1]=='I' && game_flag==2) {
+				if(flag_move==0) {
+					flag_move=1;
+					board[x][y-1]='S';}
+				else {
+					System.out.println("END OF GAME\n");
+				}
+					
 			}
 
 		}
@@ -56,6 +70,9 @@ public class Game {
 		{
 			if(board[x+1][y]==' '){
 				board[x+1][y]=mover;
+				board[x][y]=' ';
+			}else if(mover=='O' && board[x+1][y]=='k') {
+				board[x+1][y]='$';
 				board[x][y]=' ';
 			}
 		
@@ -65,6 +82,9 @@ public class Game {
 			if(board[x-1][y]==' '){
 				board[x-1][y]=mover;
 				board[x][y]=' ';
+			}else if(mover=='O' && board[x-1][y]=='k') {
+				board[x-1][y]='$';
+				board[x-1][y]=' ';
 			}
 
 		}
@@ -73,6 +93,9 @@ public class Game {
 			if(board[x][y+1]==' '){
 				board[x][y+1]=mover;
 				board[x][y]=' ';
+			}else if(mover=='O' && board[x][y+1]=='k') {
+				board[x][y+1]='$';
+				board[x][y+1]=' ';
 			}
 	
 		}
@@ -82,6 +105,16 @@ public class Game {
 				board[5][0]='S';
 				board[6][0]='S';
 				flag=1;
+			}
+			else
+				System.out.println("Nothing to do, try again!!");
+		}
+		if(input == 'C' || input == 'c') {
+			if(atLever(x,y, board))
+			{
+				hero='K';
+				board[1][7]=' ';
+				board[pos[0]][pos[1]]='K';
 			}
 			else
 				System.out.println("Nothing to do, try again!!");
@@ -103,8 +136,7 @@ public class Game {
 			{'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'}
 
 		};
-		// TODO: lever esta a desaparecer, why? 
-		// movimentos do guarda
+
 		
 		char[][] board2 = new char [][]{
 			{'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
@@ -130,19 +162,19 @@ public class Game {
 		{
 			key2 = key.next().charAt(0);
 
-			if(key2 == 'q' || key2 == 'Q') // Para sair TODO: ver porque esta a dar erro ao pressionar esta tecla
+			if(key2 == 'q' || key2 == 'Q') 
 				break;
 
 
-			int pos[] = getPos(board, 'H');
+			int pos[] = getPos(board, hero, 10);
 			
-			checkDirection(key2, pos, board, 'H');
+			checkDirection(key2, pos, board, hero);
 			
-			pos = getPos(board, 'H');
+			pos = getPos(board, hero, 10);
 			
 			guardMovement(board, count);
 			
-			if(adjacentGuard(pos[0], pos[1], board))
+			if(adjacentEnemy(pos[0], pos[1], board, 'G'))
 			{
 				printBoard(board, 10);
 				System.out.println("GAME OVER!");
@@ -159,9 +191,38 @@ public class Game {
 			
 			if(((pos[0]==5 && pos[1]==1) || (pos[0]==6 && pos[1]==1)) && flag==1) {
 				while(true) {
+					game_flag=2;
+					
+					if(flag_move==1)
+					{	
+						break;
+					}
+					
+					key2 = key.next().charAt(0); 
+					
+					if(key2 == 'q' || key2 == 'Q') 
+						break;
+					
 					ogreMovement(board2); 
+					
+					pos = getPos(board2, hero, 9);
+					
+					checkDirection(key2, pos, board2, hero);
+					
+					
+					if(adjacentEnemy(pos[0], pos[1], board2, 'O'))
+					{
+						printBoard(board2, 9);
+						System.out.println("GAME OVER!");
+						key.close();
+						return;
+					}
+					
 					printBoard(board2, 9);
+					
+					
 				}
+				break;
 				
 			}
 					
@@ -181,27 +242,28 @@ public class Game {
 			return false;
 	}
 
-	public static boolean adjacentGuard(int x, int y, char[][]board)
+	public static boolean adjacentEnemy(int x, int y, char[][]board, char enemy)
 	{
-		if(board[x][y] == 'H' && board[x+1][y] == 'G')
+		if(board[x][y] == hero && board[x+1][y] == enemy)
 			return true;
-		else if(board[x][y] == 'H' && board[x-1][y] == 'G')
+		else if(board[x][y] == hero && board[x-1][y] == enemy)
 			return true;
-		else if(board[x][y] == 'H' && board[x][y+1] == 'G')
+		else if(board[x][y] == hero && board[x][y+1] == enemy)
 			return true;
-		else if(board[x][y] == 'H' && board[x][y-1] == 'G')
+		else if(board[x][y] == hero && board[x][y-1] == enemy)
 			return true;
 		else
 			return false;
 	}
 	
 	public static void guardMovement(char[][]board, int count) {
-		int pos[]= getPos(board, 'G');
+		int pos[]= getPos(board, 'G', 10);
 		char moves[] = {'A','S','S','S','S','A','A','A','A','A','A','S','D','D','D','D','D','D','D','W','W','W','W','W'};
 		checkDirection(moves[count], pos, board, 'G');
 	}
 	
-	public static void ogreMovement(char[][]board2) {
+	public static char randomDirection() {
+		
 		Random rand = new Random();
 		
 		char move=' ';
@@ -224,10 +286,87 @@ public class Game {
 		
 		}
 		
-		int pos[]= getPos(board2, 'O');
+		return move;
+		
+	}
+	
+	public static void ogreMovement(char[][]board2) {
+		
+		char move= randomDirection();		
+		
+		int pos[]= getPos(board2, 'O', 9);
 		
 		checkDirection(move, pos, board2, 'O');
 		
+		pos= getPos(board2, 'O', 9);
+		
+		if(hero!='K')
+			board2[1][7]='k';
+		
+		clubSwing(pos, board2);
+		
+	}
+	
+	public static void clubSwing(int pos[], char[][]board2) {
+		char move= randomDirection();
+		int position[]= getPos(board2, '*', 9);
+		
+		switch(move) {
+		
+		case 'W':
+			if(board2[pos[0]-1][pos[1]]==' ') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]-1][pos[1]]='*';
+			}else if(board2[pos[0]-1][pos[1]]=='X' || board2[pos[0]-1][pos[1]]=='I') {
+				clubSwing(pos, board2);
+			}
+			
+			else if(board2[pos[0]-1][pos[1]]=='k') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]-1][pos[1]]='$';
+			}
+			break;
+			
+		case 'A':
+			if(board2[pos[0]][pos[1]-1]==' ') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]][pos[1]-1]='*';
+			}else if(board2[pos[0]][pos[1]-1]=='X' || board2[pos[0]][pos[1]-1]=='I') {
+				clubSwing(pos, board2);
+			}
+			else if(board2[pos[0]][pos[1]-1]=='k') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]][pos[1]-1]='$';
+			}
+			break;
+			
+		case 'S':
+			if(board2[pos[0]+1][pos[1]]==' ') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]+1][pos[1]]='*';
+			}else if(board2[pos[0]+1][pos[1]]=='X' || board2[pos[0]+1][pos[1]]=='I') {
+				clubSwing(pos, board2);
+			}
+			else if(board2[pos[0]+1][pos[1]]=='k') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]+1][pos[1]]='$';
+
+			}
+			break;
+			
+		case 'D':
+			if(board2[pos[0]][pos[1]+1]==' ') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]][pos[1]+1]='*';
+			}else if(board2[pos[0]][pos[1]+1]=='X' || board2[pos[0]][pos[1]+1]=='I') {
+				clubSwing(pos, board2);
+			}
+			else if(board2[pos[0]][pos[1]+1]=='k') {
+				board2[position[0]][position[1]]=' ';
+				board2[pos[0]][pos[1]+1]='$';
+			}
+			break;
+		}
 	}
 
 
