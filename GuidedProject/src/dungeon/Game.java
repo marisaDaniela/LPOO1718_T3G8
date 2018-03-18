@@ -244,13 +244,13 @@ public class Game {
 
 	public static boolean adjacentEnemy(int x, int y, char[][]board, char enemy)
 	{
-		if(board[x][y] == hero && board[x+1][y] == enemy)
+		if(board[x][y] == hero && (board[x+1][y] == enemy || board[x+1][y] == '*'))
 			return true;
-		else if(board[x][y] == hero && board[x-1][y] == enemy)
+		else if(board[x][y] == hero && (board[x-1][y] == enemy || board[x-1][y] == '*'))
 			return true;
-		else if(board[x][y] == hero && board[x][y+1] == enemy)
+		else if(board[x][y] == hero && (board[x][y+1] == enemy || board[x][y+1] == '*'))
 			return true;
-		else if(board[x][y] == hero && board[x][y-1] == enemy)
+		else if(board[x][y] == hero && (board[x][y-1] == enemy ||board[x][y-1] == '*'))
 			return true;
 		else
 			return false;
