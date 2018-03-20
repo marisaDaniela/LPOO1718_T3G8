@@ -210,7 +210,7 @@ public class Game {
 					checkDirection(key2, pos, board2, hero);
 					
 					
-					if(adjacentEnemy(pos[0], pos[1], board2, 'O'))
+					if(adjacentEnemy(pos[0], pos[1], board2, 'O') || adjacentEnemy(pos[0], pos[1], board2, '*'))
 					{
 						printBoard(board2, 9);
 						System.out.println("GAME OVER!");
@@ -244,13 +244,13 @@ public class Game {
 
 	public static boolean adjacentEnemy(int x, int y, char[][]board, char enemy)
 	{
-		if(board[x][y] == hero && (board[x+1][y] == enemy || board[x+1][y] == '*'))
+		if(board[x][y] == hero && board[x+1][y] == enemy)
 			return true;
-		else if(board[x][y] == hero && (board[x-1][y] == enemy || board[x-1][y] == '*'))
+		else if(board[x][y] == hero && board[x-1][y] == enemy)
 			return true;
-		else if(board[x][y] == hero && (board[x][y+1] == enemy || board[x][y+1] == '*'))
+		else if(board[x][y] == hero && board[x][y+1] == enemy)
 			return true;
-		else if(board[x][y] == hero && (board[x][y-1] == enemy ||board[x][y-1] == '*'))
+		else if(board[x][y] == hero && board[x][y-1] == enemy)
 			return true;
 		else
 			return false;
