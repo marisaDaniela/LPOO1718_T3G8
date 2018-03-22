@@ -1,6 +1,7 @@
-package dungeon;
+package dkeep.cli;
 import java.util.Random;
 import java.util.Scanner;
+import dkeep.logic.*;
 
 public class Game {
 	
