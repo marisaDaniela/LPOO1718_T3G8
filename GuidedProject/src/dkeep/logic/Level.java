@@ -12,6 +12,4 @@ public class Level {
 		this.map = map;
 	}
 	
-	
-
 }

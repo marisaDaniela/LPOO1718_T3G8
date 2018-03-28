@@ -9,12 +9,6 @@ public class Coordinates {
 		
 	}
 
-/*	public Coordinates(int x, int y) {
-		
-		this.setX(x);
-		this.setY(y);
-	}*/
-
 	public int getX() {
 		return x;
 	}

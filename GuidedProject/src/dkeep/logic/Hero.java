@@ -1,9 +1,10 @@
 package dkeep.logic;
 
+import dkeep.cli.Game;
+
 public class Hero extends Character{
 	
 	private char rep ='H'; 
-	
 	
 	public static boolean isAdjacent(Coordinates coord, char[][] board, char element) {
 		
@@ -20,7 +21,7 @@ public class Hero extends Character{
 			{
 				board[5][0]='S';
 				board[6][0]='S';
-				flag=1;
+				Game.flag=1;
 			}
 			
 		}

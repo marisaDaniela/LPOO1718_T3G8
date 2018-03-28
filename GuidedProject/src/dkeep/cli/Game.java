@@ -1,27 +1,26 @@
 package dkeep.cli;
-import java.util.Random;
 import java.util.Scanner;
 import dkeep.logic.*;
 import dkeep.logic.Character;
 
 public class Game {
 	
-	static int flag=0;
-	static char hero='H';
-	static int game_flag=1;
-	static int flag_move=0;
+	public static int flag=0;
+	public static char hero='H';
+	public static int game_flag=1;
+	public static int flag_move=0;
 
 	
 	public static void main(String[] args) {
+		
 		Level level1 = new Level1();
 		Level level2 = new Level2();
-		Hero hero = null;
-		Guard guard = null;
-		GameState game = null;
+	
+		
 		Scanner key = new Scanner(System.in);
 		char key2 = '1';
 		
-		int count=0;
+		int count = 0;
 		
 		char[][] board = level1.getMap();
 		char[][] board2 = level2.getMap();
