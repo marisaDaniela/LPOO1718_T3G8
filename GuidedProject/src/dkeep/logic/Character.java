@@ -102,14 +102,13 @@ public class Character {
 			}else if(mover=='O' && board[x][y-1]=='k') {
 				board[x][y-1]='$';
 				board[x][y]=' ';
+			}else if(mover==Game.hero && board[x][y-1]=='S' && Game.game_flag==1) {
+				Game.game_flag=2;
 			}else if(mover==Game.hero && board[x][y-1]=='I' && Game.game_flag==2) {
-				if(Game.flag_move==0) {
-					Game.flag_move=1;
-					board[x][y-1]='S';}
-				else {
-					System.out.println("END OF GAME\n");
-				}
-					
+					board[x][y-1]='S';
+			}else if(mover==Game.hero && board[x][y-1]=='S' && Game.game_flag==2) {
+				System.out.println("END OF GAME\n");
+				Game.flag_move=1;
 			}
 
 		}
