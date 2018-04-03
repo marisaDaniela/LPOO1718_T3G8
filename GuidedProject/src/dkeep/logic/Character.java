@@ -195,5 +195,14 @@ public class Character {
 		return move;
 
 	}
+	
+	public static int randomChoice() {
+		Random rand = new Random();
+
+		int choice=rand.nextInt(2) + 1;
+		
+		return choice;
+		
+	}
 
 }
