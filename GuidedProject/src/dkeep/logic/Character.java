@@ -204,5 +204,14 @@ public class Character {
 		return choice;
 		
 	}
+	
+	public static int randomNumberPlays() {
+		Random rand = new Random();
+
+		int num=rand.nextInt(6) + 2;
+		
+		return num;
+		
+	}
 
 }
