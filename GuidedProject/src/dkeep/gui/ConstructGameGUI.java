@@ -23,7 +23,7 @@ import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
 import java.awt.event.ActionEvent;
 
-public class GameGUI extends JPanel implements MouseListener, MouseMotionListener {
+public class ConstructGameGUI extends JPanel implements MouseListener, MouseMotionListener {
 	private static final int HEIGHT = 660;
 	private static final int WIDTH = 640;
 	private JLabel warnings;
@@ -42,27 +42,11 @@ public class GameGUI extends JPanel implements MouseListener, MouseMotionListene
 	 * @wbp.nonvisual location=236,1
 	 */
 	private final JButton button = new JButton("New button");
-
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					GameGUI window = new GameGUI();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
+	
 	/**
 	 * Create the application.
 	 */
-	public GameGUI() {
+	public ConstructGameGUI() {
 		initialize();
 	}
 

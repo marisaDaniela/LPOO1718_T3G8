@@ -29,65 +29,6 @@ public class Character {
 			return false;
 	}
 
-	/*public static void checkDirection(char input, Coordinates coord, char[][]board, char mover)
-	{
-
-		if(input == 'A' || input == 'a')
-		{	
-			if(board[coord.getX()][coord.getY()-1]==' '){
-				board[coord.getX()][coord.getY()-1]=mover;
-				board[coord.getX()][coord.getY()]=' ';
-			}else if(mover=='O' && board[coord.getX()][coord.getY()-1]=='k') {
-				board[coord.getX()][coord.getY()-1]='$';
-				board[coord.getX()][coord.getY()]=' ';
-			}else if(mover==Game.hero && board[coord.getX()][coord.getY()-1]=='I' && Game.game_flag==2) {
-				if(Game.flag_move==0) {
-					Game.flag_move=1;
-					board[coord.getX()][coord.getY()-1]='S';}
-				else {
-					System.out.println("END OF GAME\n");
-				}
-
-			}
-
-		}
-		if(input == 'S' || input == 's')
-		{
-			if(board[coord.getX()+1][coord.getY()]==' '){
-				board[coord.getX()+1][coord.getY()]=mover;
-				board[coord.getX()][coord.getY()]=' ';
-			}else if(mover=='O' && board[coord.getX()+1][coord.getY()]=='k') {
-				board[coord.getX()+1][coord.getY()]='$';
-				board[coord.getX()][coord.getY()]=' ';
-			}
-
-		}
-		if(input == 'W' || input == 'w')
-		{
-			if(board[coord.getX()-1][coord.getY()]==' '){
-				board[coord.getX()-1][coord.getY()]=mover;
-				board[coord.getX()][coord.getY()]=' ';
-			}else if(mover=='O' && board[coord.getX()-1][coord.getY()]=='k') {
-				board[coord.getX()-1][coord.getY()]='$';
-				board[coord.getX()-1][coord.getY()]=' ';
-			}
-
-		}
-		if(input == 'D' || input == 'd')
-		{
-			if(board[coord.getX()][coord.getY()+1]==' '){
-				board[coord.getX()][coord.getY()+1]=mover;
-				board[coord.getX()][coord.getY()]=' ';
-			}else if(mover=='O' && board[coord.getX()][coord.getY()+1]=='k') {
-				board[coord.getX()][coord.getY()+1]='$';
-				board[coord.getX()][coord.getY()+1]=' ';
-			}
-
-		}
-
-
-	}*/
-
 	public static void checkDirection(char input, Coordinates pos, char[][]board, char mover)
 	{
 		int x= pos.getX();
