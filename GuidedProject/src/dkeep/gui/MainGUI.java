@@ -45,7 +45,7 @@ public class MainGUI {
 	private void initialize() {
 
 		
-		Menu = new JFrame("MAZE GAME");
+		Menu = new JFrame("MAZE RUNNER");
 		Menu.setResizable(false);
 		Menu.setBounds(180, 180, 550, 400);
 		Menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -62,11 +62,10 @@ public class MainGUI {
 		
 		
 		JButton btnStartGame = new JButton("New Game");
-		btnStartGame.setBackground(Color.GRAY);
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Game game = new Game();
-				//game.Game.setVisible(true);
+				StartGameGUI newGame = new StartGameGUI();
+
 			}
 		});
 		btnStartGame.setFont(new Font("American Typewriter", Font.PLAIN, 14));
@@ -76,7 +75,8 @@ public class MainGUI {
 		JButton btnCreateNewMap = new JButton("Create New Maze");
 		btnCreateNewMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				// TODO: complete this
+					ConstructGameGUI newGame = new ConstructGameGUI();
+					newGame.setVisible(true);
 			}
 		});
 		btnCreateNewMap.setFont(new Font("American Typewriter", Font.PLAIN, 14));
