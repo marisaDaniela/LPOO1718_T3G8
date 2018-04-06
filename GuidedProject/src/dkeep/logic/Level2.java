@@ -18,4 +18,16 @@ public class Level2 extends Level{
 		this.setMap(map);
 	}
 
+	@Override
+	public String printGame() {
+		String toPrint = "";
+		for (int j = 0; j < 9; j++) {
+			for (int i = 0; i < 9; i++) {
+					toPrint += (Character.toString(map[i][j]));
+			}
+			toPrint += ("\n");
+		}
+		return toPrint;
+	}
+
 }

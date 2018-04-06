@@ -155,4 +155,9 @@ public class Character {
 		
 	}
 
+	public static String toString(char c) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

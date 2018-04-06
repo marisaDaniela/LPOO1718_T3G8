@@ -24,19 +24,21 @@ import javax.swing.SwingConstants;
 import dkeep.logic.Coordinates;
 import dkeep.logic.Level;
 import dkeep.logic.Level1;
+import dkeep.logic.Utils;
 
 
 public class StartGameGUI extends JPanel {
+	private static final long serialVersionUID = 1L;
 	Level game;
 	char key = '1';
-	
+
 	JFrame Game;
-	private JFrame frame;
 	private JTextField numberOgres;
+	private boolean manualMaze = false;
 	private char[][] manualMap = null;
 	private JTextArea gameArea;
 	JButton btnLeft, btnRight, btnUp,btnDown;
-	
+
 	Coordinates hero = new Coordinates();
 	ArrayList<Coordinates> ogres;
 
@@ -58,18 +60,22 @@ public class StartGameGUI extends JPanel {
 			}
 		});
 	}
-	
-	public StartGameGUI(boolean type, char[][] map) {
+
+	public StartGameGUI(boolean type, char[][] map,ArrayList<Coordinates> ogres, Coordinates hero) {
+		manualMaze = type;
 		manualMap = map;
+		this.ogres = ogres;
+		this.hero = hero;
 		initialize();
 	}
-	
+
 
 	public void close() {
 		btnRight.setEnabled(false);
 		btnLeft.setEnabled(false);
 		btnUp.setEnabled(false);
-		btnDown.setEnabled(false);		
+		btnDown.setEnabled(false);	
+
 	}
 
 	/**
@@ -102,12 +108,17 @@ public class StartGameGUI extends JPanel {
 		JButton btnNewGame = new JButton("New Game");
 		btnNewGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//TODO: complete this!!!!!!!!!!!!
-				game = new Level1();
-				game.getMap();
-				initGame(gameArea);
-			}	
-		});
+				if (manualMaze == true)
+					setManualMaze();
+				else if ((new Utils()).isNumeric(numberOgres.getText())) {
+					int numb = Integer.parseInt(numberOgres.getText());
+					if (numb <= 0)
+						System.out.println("Number Of Ogres minor or equal to 0!");
+					game = new Level1();
+					initGame(gameArea);
+				} else
+					System.out.println("Number Of Ogres is not a number!");	
+			}});
 		btnNewGame.setFont(new Font("American Typewriter", Font.PLAIN, 13));
 		btnNewGame.setBounds(289, 107, 117, 29);
 		Game.getContentPane().add(btnNewGame);	
@@ -115,7 +126,7 @@ public class StartGameGUI extends JPanel {
 
 	public JComboBox<String> guardPersonalities() {
 		String[] guardPersonalities = {"Rookie", "Drunken", "Suspicious"};
-		
+
 		JComboBox guardPersonality = new JComboBox(guardPersonalities);
 		guardPersonality.setFont(new Font("American Typewriter", Font.PLAIN, 13));
 		guardPersonality.setBounds(141, 57, 169, 27);
@@ -144,6 +155,7 @@ public class StartGameGUI extends JPanel {
 	}
 
 	public void initGame(JTextArea gameArea) {
+		(new Utils()).printGameArea(gameArea,game);
 		btnRight.setEnabled(true);
 		btnLeft.setEnabled(true);
 		btnUp.setEnabled(true);
@@ -151,7 +163,7 @@ public class StartGameGUI extends JPanel {
 	}
 
 	private void setManualMaze() {
-		game = new Level();			
+		game = new Level1();			
 		cleanManualMap();
 		game.getMap();
 		initGame(gameArea);
@@ -183,7 +195,7 @@ public class StartGameGUI extends JPanel {
 		btnRight.setEnabled(false);
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 		btnRight.setFont(new Font("American Typewriter", Font.PLAIN, 13));
@@ -196,7 +208,7 @@ public class StartGameGUI extends JPanel {
 		btnUp.setEnabled(false);
 		btnUp.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 		btnUp.setFont(new Font("American Typewriter", Font.PLAIN, 13));
@@ -209,7 +221,7 @@ public class StartGameGUI extends JPanel {
 		btnDown.setEnabled(false);
 		btnDown.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 			}
 		});
 		btnDown.setFont(new Font("American Typewriter", Font.PLAIN, 13));
@@ -222,7 +234,7 @@ public class StartGameGUI extends JPanel {
 		btnLeft.setEnabled(false);
 		btnLeft.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				 
+
 			}
 		});
 		btnLeft.setFont(new Font("American Typewriter", Font.PLAIN, 13));

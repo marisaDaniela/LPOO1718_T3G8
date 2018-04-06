@@ -1,8 +1,8 @@
 package dkeep.logic;
 
-public class Level {
+public abstract class Level {
 	
-	private char[][] map;
+	protected char[][] map;
 
 	public char[][] getMap() {
 		return map;
@@ -11,5 +11,10 @@ public class Level {
 	public void setMap(char[][] map) {
 		this.map = map;
 	}
+	/**
+	 * Method to print game
+	 * @return A String data type
+	 */
+	public abstract String printGame();
 	
 }
