@@ -14,8 +14,8 @@ public class Character {
 					pos.setY(j);}}}
 		return pos;}
 
-	public static boolean atLever(int x, int y, char[][]board){
-		if(board[x-1][y] == 'k' || board[x+1][y] == 'k' || board[x][y-1] == 'k' || board[x][y+1] == 'k')
+	public static boolean atLever(int x, int y, char[][]board, char sym){
+		if(board[x-1][y] == sym || board[x+1][y] == sym || board[x][y-1] == sym || board[x][y+1] == sym)
 			return true;
 		return false;
 	}
@@ -28,6 +28,7 @@ public class Character {
 		moveUP(input, board, mover, x, y);
 		moveRight(input, board, mover, x, y);
 		pullLever(input, board, x, y);
+		catchArm(input, board, x, y);
 		catchKey(input, board, x, y);
 	}
 
@@ -39,13 +40,31 @@ public class Character {
 	 */
 	public static void catchKey(char input, char[][] board, int x, int y) {
 		if(input == 'C' || input == 'c') {
-			if(atLever(x,y, board)) {
+			if(atLever(x,y, board, 'k')) {
 				Game.hero='K';
 				for (int i = 0; i < board[0].length; i++) {
 					for (int j = 0; j < board[0].length; j++) {
 						if (board[i][j] == 'k')
 							board[i][j] = ' ';}}
 				board[x][y]='K';}
+			else
+				System.out.println("Nothing to do, try again!!");}}
+	
+	/**
+	 * @param input
+	 * @param board
+	 * @param x
+	 * @param y
+	 */
+	public static void catchArm(char input, char[][] board, int x, int y) {
+		if(input == 'F' || input == 'f') {
+			if(atLever(x,y, board, 'a')) {
+				Game.hero='A';
+				for (int i = 0; i < board[0].length; i++) {
+					for (int j = 0; j < board[0].length; j++) {
+						if (board[i][j] == 'a')
+							board[i][j] = ' ';}}
+				board[x][y]='A';}
 			else
 				System.out.println("Nothing to do, try again!!");}}
 
@@ -57,7 +76,7 @@ public class Character {
 	 */
 	public static void pullLever(char input, char[][] board, int x, int y) {
 		if(input == 'T' || input == 't') {
-			if(atLever(x,y, board)){
+			if(atLever(x,y, board, 'k')){
 				for (int i = 0; i < board[0].length; i++) {
 					for (int j = 0; j < board[0].length; j++) {
 						if (board[i][j] == 'I')

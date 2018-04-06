@@ -7,6 +7,7 @@ public class Game {
 	public static int flag=0;
 	public static char hero='H';
 	public static char guard='G';
+	public static char ogre='O';
 	public static int game_flag=1;
 	public static int flag_move=0;
 	public static boolean insertOgre=false;
@@ -102,7 +103,7 @@ public class Game {
 							count=0;
 						}else
 							count++;}}
-				if(Hero.isAdjacent(coord, board, 'G')){
+				if(Hero.isAdjacent(coord, board, guard)){
 					GameOver(key, board);
 					return;}
 				if(game_flag!=2) {
@@ -126,11 +127,14 @@ public class Game {
 				for(int i = 0; i < Ogre.ogres.size(); i++) {
 					Ogre.ogres.get(i);
 					Ogre.ogreMovement(board2);}
-				if(Hero.isAdjacent(coord, board2, 'O')  || Hero.isAdjacent(coord, board2, '*')){
+				if(Hero.isAdjacent(coord, board2, ogre)  || Hero.isAdjacent(coord, board2, '*')){
+					if(hero == 'A') {
+						ogre = '8';
+					} else {
 					GameState.printBoard(board2, 9);
 					System.out.println("GAME OVER!");
 					key.close();
-					return;}
+					return;}}
 				if(flag_move==1) { //if flg_move is 1 it means it's the end of the game 
 					break;
 				}

@@ -21,7 +21,7 @@ public class Hero extends Character{
 			{
 				board[5][0]='S';
 				board[6][0]='S';
-				Game.flag=1;
+				Game.flag=1; 
 			}
 			
 		}
