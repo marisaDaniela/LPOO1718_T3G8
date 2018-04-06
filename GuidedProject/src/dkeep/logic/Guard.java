@@ -52,7 +52,7 @@ public class Guard extends Character{
 				}else if(moving==2 && asleep==true) {
 					movement(board, count);
 				}
-		}
+		} 
 		else if(personality == "Suspicious") {
 						
 			if(num_laps==0) {

@@ -13,6 +13,7 @@ public class Game {
 	public static boolean insertOgre=false;
 	public static Level level1 = new Level1();
 	public static Level level2 = new Level2();
+	public static boolean WIN = false;
 
 
 	public static void main(String[] args) {
@@ -25,15 +26,13 @@ public class Game {
 		char[][] board = level1.getMap();
 		char[][] board2 = level2.getMap();
 
-		GameState.printBoard(board, 10);
-
 		//Guard.personality=Guard.randomPersonality();
 
 		Guard.personality="Drunken";
 
-		System.out.println("Guard Personality: " + Guard.personality + "\n");
+		System.out.println("Guard Personality: " + Guard.personality);
 
-
+		GameState.printBoard(board, 10);
 		Coordinates coord = new Coordinates();
 
 		while (true) 
@@ -104,7 +103,8 @@ public class Game {
 					}
 
 					for(int i = 0; i < Ogre.ogres.size(); i++) {
-						Ogre.ogres.get(i).ogreMovement(board2);
+						Ogre.ogres.get(i);
+						Ogre.ogreMovement(board2);
 					}
 					GameState.printBoard(board2, 9);
 				}
@@ -116,7 +116,11 @@ public class Game {
 				coord = Character.getPos(board2, hero, 9);
 				Character.checkDirection(key2, coord, board2, hero);
 				coord = Character.getPos(board2, hero, 9);
-				//Ogre.ogreMovement(board2);
+
+				for(int i = 0; i < Ogre.ogres.size(); i++) {
+					Ogre.ogres.get(i);
+					Ogre.ogreMovement(board2);
+				}
 				if(Hero.isAdjacent(coord, board2, 'O')  || Hero.isAdjacent(coord, board2, '*'))
 				{
 					GameState.printBoard(board2, 9);

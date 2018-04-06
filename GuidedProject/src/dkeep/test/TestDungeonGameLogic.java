@@ -6,6 +6,7 @@ import org.junit.Test;
 
 import dkeep.logic.Coordinates;
 import dkeep.logic.Hero;
+import dkeep.cli.Game;
 import dkeep.logic.Character;
 
 
@@ -13,7 +14,7 @@ public class TestDungeonGameLogic {
 
 	char map[][] = {
 			{'X','X','X','X','X'},
-			{'X','H',' ','G','X'},
+			{'X','H',' ','G','X'}, 
 			{'I',' ',' ',' ','X'},
 			{'X','k',' ',' ','X'},
 			{'X','X','X','X','X'},
@@ -97,7 +98,7 @@ public class TestDungeonGameLogic {
 		Coordinates heroPosition = Character.getPos(map, 'H', 5);
 		Coordinates door = Character.getPos(map, 'I', 5);
 
-		assertEquals(door.getX(), 2);
+		assertEquals(door.getX(), 2); 
 		assertEquals(door.getY(), 0);
 
 		//Anda para baixo
@@ -112,30 +113,47 @@ public class TestDungeonGameLogic {
 		assertEquals(heroPosition.getY(), posActual.getY());		
 	}
 
-//
-//	@Test // TODO:
-//	public void testMoveToLeverOpenDoors(){
-//		Coordinates heroPosition = Character.getPos(map, 'H', 5);
-//		Coordinates door = Character.getPos(map, 'I', 5);
-//		System.out.println(door.getX());
-//		System.out.println(door.getY());
-//		boolean doorOpen = false;
-//		assertEquals(door.getX(), 2);
-//		assertEquals(door.getY(), 0);
-//		
-//		Character.checkDirection('S', heroPosition, map, 'H');
-//		heroPosition = Character.getPos(map, 'H', 5);
-//		Character.checkDirection('T', heroPosition, map, 'H');
-//		
-//		if(map[0][2] == 'S') {
-//			doorOpen = true;
-//		}
-//		assertEquals(true, doorOpen);
-//	}
-//	
-//		@Test
-//		public void testMoveToNextLevel(){
-//	
-//		}
+
+	@Test 
+	public void testMoveToLeverOpenDoors(){
+		Coordinates heroPosition = Character.getPos(map, 'H', 5);
+		Coordinates door = Character.getPos(map, 'I', 5);
+		boolean doorOpen = false;
+
+		Character.checkDirection('S', heroPosition, map, 'H');
+		heroPosition = Character.getPos(map, 'H', 5);
+
+		Character.checkDirection('t', heroPosition, map, 'H');
+		Coordinates doorOpened = Character.getPos(map, 'S', 5);
+
+		if(map[2][0] == 'S') {
+			doorOpen = true;
+		}
+		assertEquals(true, doorOpen);
+	}
+
+	@Test
+	public void testMoveToNextLevel(){
+		assertEquals(Game.game_flag , 1); // nivel 1
+		Coordinates heroPosition = Character.getPos(map, 'H', 5);
+		Coordinates door = Character.getPos(map, 'I', 5);
+		System.out.println(door.getX());
+		System.out.println(door.getY());
+		boolean doorOpen = false;
+
+		Character.checkDirection('S', heroPosition, map, 'H');
+		heroPosition = Character.getPos(map, 'H', 5);
+
+		Character.checkDirection('t', heroPosition, map, 'H');
+		Coordinates doorOpened = Character.getPos(map, 'S', 5);
+
+		if(map[2][0] == 'S') {
+			doorOpen = true;
+		}
+		assertEquals(true, doorOpen);
+		Character.checkDirection('A', heroPosition, map, 'H');
+		assertEquals(Game.game_flag , 2); // nivel2
+
+	}
 
 }

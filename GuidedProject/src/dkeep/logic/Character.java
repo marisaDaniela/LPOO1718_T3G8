@@ -20,7 +20,7 @@ public class Character {
 		}
 		return pos;
 	}
-	
+
 	public static boolean atLever(int x, int y, char[][]board)
 	{
 		if(board[x-1][y] == 'k' || board[x+1][y] == 'k' || board[x][y-1] == 'k' || board[x][y+1] == 'k')
@@ -46,10 +46,11 @@ public class Character {
 			}else if(mover==Game.hero && board[x][y-1]=='S' && Game.game_flag==1) {
 				Game.game_flag=2;
 			}else if(mover==Game.hero && board[x][y-1]=='I' && Game.game_flag==2) {
-					board[x][y-1]='S';
+				board[x][y-1]='S';
 			}else if(mover==Game.hero && board[x][y-1]=='S' && Game.game_flag==2) {
 				System.out.println("END OF GAME\n");
 				Game.flag_move=1;
+				Game.WIN = true;
 			}
 
 		}
@@ -62,7 +63,7 @@ public class Character {
 				board[x+1][y]='$';
 				board[x][y]=' ';
 			}
-		
+
 		}
 		if(input == 'W' || input == 'w')
 		{
@@ -84,14 +85,17 @@ public class Character {
 				board[x][y+1]='$';
 				board[x][y+1]=' ';
 			}
-	
+
 		}
 		if(input == 'T' || input == 't') {
 			if(atLever(x,y, board))
 			{
-				board[5][0]='S';
-				board[6][0]='S';
-				Game.flag=1;
+				for (int i = 0; i < board[0].length; i++) {
+					for (int j = 0; j < board[0].length; j++) {
+						if (board[i][j] == 'I')
+							board[i][j] = 'S';
+					}
+				}
 			}
 			else
 				System.out.println("Nothing to do, try again!!");
@@ -100,7 +104,14 @@ public class Character {
 			if(atLever(x,y, board))
 			{
 				Game.hero='K';
-				board[1][7]=' ';
+
+				for (int i = 0; i < board[0].length; i++) {
+					for (int j = 0; j < board[0].length; j++) {
+						if (board[i][j] == 'k')
+							board[i][j] = ' ';
+					}
+				}
+
 				board[x][y]='K';
 			}
 			else
@@ -122,7 +133,7 @@ public class Character {
 			move='A';
 			break;
 		case 2:
-			move='S';
+			move='S'; 
 			break;
 		case 3:
 			move='W';
@@ -136,23 +147,23 @@ public class Character {
 		return move;
 
 	}
-	
+
 	public static int randomChoice() {
 		Random rand = new Random();
 
 		int choice=rand.nextInt(2) + 1;
-		
+
 		return choice;
-		
+
 	}
-	
+
 	public static int randomNumberPlays() {
 		Random rand = new Random();
 
 		int num=rand.nextInt(6) + 2;
-		
+
 		return num;
-		
+
 	}
 
 	public static String toString(char c) {
