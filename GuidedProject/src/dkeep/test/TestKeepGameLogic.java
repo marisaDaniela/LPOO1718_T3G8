@@ -2,17 +2,12 @@ package dkeep.test;
 
 import static org.junit.Assert.*;
 
-import java.util.ArrayList;
-
 import org.junit.Test;
 
 import dkeep.cli.Game;
 import dkeep.logic.Character;
-import dkeep.logic.Club;
 import dkeep.logic.Coordinates;
 import dkeep.logic.Hero;
-import dkeep.logic.Level;
-import dkeep.logic.Level2;
 import dkeep.logic.Ogre;
 
 public class TestKeepGameLogic {
@@ -132,6 +127,21 @@ public class TestKeepGameLogic {
 		assertEquals(map[2][0], 'S');
 		assertTrue(Game.WIN);
 
+	}
+
+	@Test
+	public void testInsertOgre() {
+		Ogre.insertOgre(2,2, map);
+		assertEquals(map[2][2], 'O');
+	}
+
+	@Test
+	public void testInsertClub() {
+		Ogre.insertOgre(2,2, map);
+		assertEquals(map[2][2], 'O');
+		assertEquals(map[3][2], ' ');
+		Ogre.insertClub(3,2, map);
+		assertEquals(map[3][3], '*');
 	}
 
 }
