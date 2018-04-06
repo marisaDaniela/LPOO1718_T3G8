@@ -4,7 +4,6 @@ import dkeep.logic.*;
 import dkeep.logic.Character;
 
 public class Game {
-
 	public static int flag=0;
 	public static char hero='H';
 	public static char guard='G';
@@ -15,37 +14,57 @@ public class Game {
 	public static Level level2 = new Level2();
 	public static boolean WIN = false;
 
-
 	public static void main(String[] args) {
-
 		Scanner key = new Scanner(System.in);
 		char key2 = '1';
-
-		int count = 0;
-
+		int count = 0, selection;
 		char[][] board = level1.getMap();
 		char[][] board2 = level2.getMap();
+		Scanner input = new Scanner(System.in);
+		System.out.println("Choose guard personality:");
+		System.out.println("-------------------------\n");
+		System.out.println("1 - Rookie");
+		System.out.println("2 - Suspicious");
+		System.out.println("3 - Drunken");
+		System.out.println("4 - Quit");
 
-		//Guard.personality=Guard.randomPersonality();
+		selection = input.nextInt();
+		switch(selection) {
+		case 1:
+			Guard.personality="Rookie";
+			break;
+		case 2: 
+			Guard.personality="Suspicious";
+			break;
+		case 3: 
+			Guard.personality="Drunken";
+			break;
+		default:
+			Guard.personality="Rookie";
+			break;
+		}
+		GameLoop(key, count, board, board2);
+	}
 
-		Guard.personality="Drunken";
 
-		System.out.println("Guard Personality: " + Guard.personality);
-
+	/**
+	 * @param key
+	 * @param count
+	 * @param board
+	 * @param board2
+	 */
+	public static void GameLoop(Scanner key, int count, char[][] board, char[][] board2) {
+		char key2;
 		GameState.printBoard(board, 10);
 		Coordinates coord = new Coordinates();
 
-		while (true) 
-		{
+		while (true) {
 			if(game_flag==1) {
 				key2 = key.next().charAt(0);
-
 				if(key2 == 'q' || key2 == 'Q') 
 					break;
-
 				coord = Character.getPos(board, hero, 10);
 				Character.checkDirection(key2, coord, board, hero);
-
 				coord = Character.getPos(board, hero, 10);
 				if(Guard.personality=="Rookie") {
 					Guard.movement(board, count);
@@ -66,10 +85,7 @@ public class Game {
 							if(count==23) {
 								count=0;
 							}else if(Guard.asleep!=true)
-								count++;
-							//System.out.println("count: " + count + "\n");
-						}
-
+								count++;}
 					}else {
 						System.out.println("num laps: " + Guard.num_laps + "\n");
 						Guard.num_laps--;
@@ -85,75 +101,54 @@ public class Game {
 						if(count==23) {
 							count=0;
 						}else
-							count++;
-					}
-				}
-				if(Hero.isAdjacent(coord, board, 'G'))
-				{
+							count++;}}
+				if(Hero.isAdjacent(coord, board, 'G')){
 					GameOver(key, board);
-					return;
-				}
+					return;}
 				if(game_flag!=2) {
 					GameState.printBoard(board, 10);
 				}else {
 					if(!insertOgre) {
 						int number =  ((int) (Math.random() * (3 - 1))) + 1;
 						Ogre.insertOgres(board2, number);
-						insertOgre = true;
-					}
-
+						insertOgre = true;}
 					for(int i = 0; i < Ogre.ogres.size(); i++) {
 						Ogre.ogres.get(i);
-						Ogre.ogreMovement(board2);
-					}
-					GameState.printBoard(board2, 9);
-				}
+						Ogre.ogreMovement(board2);}
+					GameState.printBoard(board2, 9);}
 			}else if(game_flag==2) {
 				key2 = key.next().charAt(0); 
-
 				if(key2 == 'q' || key2 == 'Q') 
 					break;
 				coord = Character.getPos(board2, hero, 9);
 				Character.checkDirection(key2, coord, board2, hero);
 				coord = Character.getPos(board2, hero, 9);
-
 				for(int i = 0; i < Ogre.ogres.size(); i++) {
 					Ogre.ogres.get(i);
-					Ogre.ogreMovement(board2);
-				}
-				if(Hero.isAdjacent(coord, board2, 'O')  || Hero.isAdjacent(coord, board2, '*'))
-				{
+					Ogre.ogreMovement(board2);}
+				if(Hero.isAdjacent(coord, board2, 'O')  || Hero.isAdjacent(coord, board2, '*')){
 					GameState.printBoard(board2, 9);
 					System.out.println("GAME OVER!");
 					key.close();
-					return;
-				}
-
-				if(flag_move==1)//if flg_move is 1 it means it's the end of the game
-				{	
+					return;}
+				if(flag_move==1) { //if flg_move is 1 it means it's the end of the game 
 					break;
 				}
 				GameState.printBoard(board2, 9);
-
 			}
 		}
 		key.close();
 	}
 
-
+ 
 	/**
 	 * @param key
 	 * @param board
 	 */
 	public static void GameOver(Scanner key, char[][] board) {
-
 		GameState.printBoard(board, 10);
 		System.out.println("GAME OVER!");
 		key.close();
 		return;
 	}
-
-
-
-
 }

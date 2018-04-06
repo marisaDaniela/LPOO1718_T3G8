@@ -26,7 +26,6 @@ public class Guard extends Character{
 					if(asleep==true) {
 						asleep=false;
 						System.out.println("G pos: " + pos.getX() + " " + pos.getY() + "\n");
-						//board[pos.getX()][pos.getY()]='G';
 						Game.guard='G';
 					}else
 					if(reverse==true) {
