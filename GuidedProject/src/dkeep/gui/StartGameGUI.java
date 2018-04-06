@@ -21,11 +21,10 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
+import dkeep.cli.Utils;
 import dkeep.logic.Coordinates;
 import dkeep.logic.Level;
 import dkeep.logic.Level1;
-import dkeep.logic.Utils;
-
 
 public class StartGameGUI extends JPanel {
 	private static final long serialVersionUID = 1L;
@@ -48,6 +47,7 @@ public class StartGameGUI extends JPanel {
 	public StartGameGUI() {
 		initialize();
 	}
+	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -87,6 +87,8 @@ public class StartGameGUI extends JPanel {
 		numberOgres();
 		labels();
 		exitBut();
+		@SuppressWarnings("unused")
+		JComboBox<String> guardPersonality = guardPersonalities();	
 
 		gameArea = new JTextArea();
 		gameArea.setWrapStyleWord(true);

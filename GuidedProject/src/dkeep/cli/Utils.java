@@ -1,6 +1,9 @@
-package dkeep.logic;
+package dkeep.cli;
 
 import javax.swing.JTextArea;
+
+import dkeep.logic.GameState;
+import dkeep.logic.Level;
 
 /**
  * Utils.java - class to util methods
@@ -31,6 +34,12 @@ public class Utils {
 	 * @param game
 	 */
 	public void printGameArea(JTextArea gameArea, Level game) {
-		
+		char[][] map = game.getMap();
+		for(int i = 0; i < map.length; i++) {
+			gameArea.append("\n");
+			for(int j = 0; j < map.length; j++) {
+				gameArea.setText(GameState.printBoard(map,  map.length));
+			}	
+		}
 	}
 }

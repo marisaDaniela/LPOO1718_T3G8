@@ -134,9 +134,6 @@ public class TestDungeonGameLogic {
 	public void testMoveToNextLevel(){
 		assertEquals(Game.game_flag , 1); // nivel 1
 		Coordinates heroPosition = Character.getPos(map, 'H', 5);
-		Coordinates door = Character.getPos(map, 'I', 5);
-		System.out.println(door.getX());
-		System.out.println(door.getY());
 		boolean doorOpen = false;
 
 		Character.checkDirection('S', heroPosition, map, 'H');

@@ -42,8 +42,6 @@ public class MainGUI {
 	}
 	
 	private void initialize() {
-
-		
 		Menu = new JFrame("MAZE RUNNER");
 		Menu.setResizable(false);
 		Menu.setBounds(180, 180, 550, 400);
@@ -60,17 +58,20 @@ public class MainGUI {
 		exitBut();
 		
 		
-		JButton btnStartGame = new JButton("New Game");
+		JButton btnStartGame = new JButton("PLAY");
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-
+				StartGameGUI newGame = new StartGameGUI();
+				newGame.Game.setVisible(true);
+	
 			}
 		});
 		btnStartGame.setFont(new Font("American Typewriter", Font.PLAIN, 14));
-		btnStartGame.setBounds(400, 77, 130, 29);
+		btnStartGame.setForeground(Color.BLUE);
+		btnStartGame.setBounds(400, 100, 130, 50);
 		Menu.getContentPane().add(btnStartGame);	
 		
-		JButton btnCreateNewMap = new JButton("Create New Maze");
+		JButton btnCreateNewMap = new JButton("CREATE MAZE");
 		btnCreateNewMap.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 					ConstructGameGUI newGame = new ConstructGameGUI();
@@ -78,29 +79,21 @@ public class MainGUI {
 			}
 		});
 		btnCreateNewMap.setFont(new Font("American Typewriter", Font.PLAIN, 14));
-		btnCreateNewMap.setBounds(400, 129, 130, 29);
+		btnCreateNewMap.setBounds(400, 152, 130, 50);
+		btnCreateNewMap.setForeground(Color.BLUE);
 		Menu.getContentPane().add(btnCreateNewMap);	
-		
-		JButton btnSaveGame = new JButton("Save Game");
-		btnSaveGame.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				// TODO: complete this
-			}
-		});
-		btnSaveGame.setFont(new Font("American Typewriter", Font.PLAIN, 14));
-		btnSaveGame.setBounds(400, 182, 130, 29);
-		Menu.getContentPane().add(btnSaveGame);	
 	}
 
 	public void exitBut() {
-		JButton btnExit = new JButton("Exit");
+		JButton btnExit = new JButton("EXIT");
 		btnExit.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
 		});
 		btnExit.setFont(new Font("American Typewriter", Font.PLAIN, 14));
-		btnExit.setBounds(400, 235, 130, 29);
+		btnExit.setBounds(400, 204, 130, 50);
+		btnExit.setForeground(Color.BLUE);
 		Menu.getContentPane().add(btnExit);
 	}
 

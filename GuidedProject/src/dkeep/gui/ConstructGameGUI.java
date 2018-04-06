@@ -148,7 +148,6 @@ public class ConstructGameGUI extends JPanel implements MouseListener, MouseMoti
 		repaint();
 	}
 
-
 	public void putSelectItemMap(int xMouse, int yMouse) {
 		position.setX(120); 
 		position.setY(16);
@@ -160,7 +159,6 @@ public class ConstructGameGUI extends JPanel implements MouseListener, MouseMoti
 			else
 				map[i][j] = iconSelected;
 	}
-
 
 	public void iconSelect(int xMouse, int yMouse) {
 		if (xMouse >= 5 && xMouse <= 54)
