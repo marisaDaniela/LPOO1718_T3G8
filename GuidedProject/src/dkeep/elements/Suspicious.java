@@ -1,4 +1,4 @@
-package dkeep.logic;
+package dkeep.elements;
 /**
  * Suspicious.java - class for guard Suspicious
  */

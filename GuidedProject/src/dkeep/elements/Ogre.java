@@ -1,10 +1,12 @@
 
-package dkeep.logic;
+package dkeep.elements;
 
 import java.util.ArrayList;
 import java.util.Random;
 
 import dkeep.cli.Game;
+import dkeep.logic.Character;
+import dkeep.logic.Coordinates;
 /**
  * Ogre.java - classe for ogre
  * @see Character

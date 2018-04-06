@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import dkeep.logic.Coordinates;
 import dkeep.logic.GameState;
-import dkeep.logic.Hero;
 import dkeep.logic.Level;
 import dkeep.logic.Level1;
 import dkeep.cli.Game;
+import dkeep.elements.Hero;
 import dkeep.logic.Character;
 
 

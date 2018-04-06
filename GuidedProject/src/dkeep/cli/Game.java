@@ -1,5 +1,9 @@
 package dkeep.cli;
 import java.util.Scanner;
+
+import dkeep.elements.Guard;
+import dkeep.elements.Hero;
+import dkeep.elements.Ogre;
 import dkeep.logic.*;
 import dkeep.logic.Character;
 /**

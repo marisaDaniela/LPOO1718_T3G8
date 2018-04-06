@@ -1,4 +1,4 @@
-package dkeep.logic;
+package dkeep.elements;
 /**
  * Rookie.java - class for guard Rookie
  */

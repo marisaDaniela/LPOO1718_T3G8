@@ -1,6 +1,8 @@
-package dkeep.logic;
+package dkeep.elements;
 
 import dkeep.cli.Game;
+import dkeep.logic.Character;
+import dkeep.logic.Coordinates;
 /**
  * Hero.java - a class for Hero
  * @see Character

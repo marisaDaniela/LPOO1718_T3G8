@@ -1,4 +1,4 @@
-package dkeep.logic;
+package dkeep.elements;
 /**
  * Drunken.java - a classe for drunken guard
  * @see Guard

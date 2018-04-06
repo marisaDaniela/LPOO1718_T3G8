@@ -1,4 +1,7 @@
-package dkeep.logic;
+package dkeep.elements;
+
+import dkeep.logic.Character;
+import dkeep.logic.Coordinates;
 
 /**  
 * Club.java - class for the Club

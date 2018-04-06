@@ -1,8 +1,10 @@
-package dkeep.logic;
+package dkeep.elements;
 
 import java.util.Random;
 
 import dkeep.cli.Game;
+import dkeep.logic.Character;
+import dkeep.logic.Coordinates;
 /**
  * Guard.java - a class for Guard
  * @see Character

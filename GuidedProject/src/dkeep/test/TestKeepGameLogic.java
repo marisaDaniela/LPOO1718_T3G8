@@ -5,10 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import dkeep.cli.Game;
+import dkeep.elements.Hero;
+import dkeep.elements.Ogre;
 import dkeep.logic.Character;
 import dkeep.logic.Coordinates;
-import dkeep.logic.Hero;
-import dkeep.logic.Ogre;
 
 public class TestKeepGameLogic {
 
