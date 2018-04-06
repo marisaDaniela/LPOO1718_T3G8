@@ -5,7 +5,10 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import dkeep.logic.Coordinates;
+import dkeep.logic.GameState;
 import dkeep.logic.Hero;
+import dkeep.logic.Level;
+import dkeep.logic.Level1;
 import dkeep.cli.Game;
 import dkeep.logic.Character;
 
@@ -155,5 +158,14 @@ public class TestDungeonGameLogic {
 		assertEquals(Game.game_flag , 2); // nivel2
 
 	}
+	
+
+	@Test
+	public void testEqualsCoor(){
+		Coordinates cor = new Coordinates();
+		assertEquals(0, cor.getX());
+		assertEquals(0, cor.getY());
+	}
+	
 
 }

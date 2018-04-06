@@ -3,7 +3,7 @@ package dkeep.logic;
 import javax.swing.JTextArea;
 
 /**
- * Utilities.java - class to util methods
+ * Utils.java - class to util methods
  */
 public class Utils {
 	/**
@@ -25,6 +25,11 @@ public class Utils {
 		return true;
 	}
 
+	/**
+	 * Method to print game in gameArea
+	 * @param gameArea
+	 * @param game
+	 */
 	public void printGameArea(JTextArea gameArea, Level game) {
 		
 	}

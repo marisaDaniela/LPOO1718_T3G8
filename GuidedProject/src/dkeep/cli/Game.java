@@ -2,7 +2,9 @@ package dkeep.cli;
 import java.util.Scanner;
 import dkeep.logic.*;
 import dkeep.logic.Character;
-
+/**
+ * Game.java - main menu of game in the console
+ */
 public class Game {
 	public static int flag=0;
 	public static char hero='H';
@@ -15,19 +17,32 @@ public class Game {
 	public static Level level2 = new Level2();
 	public static boolean WIN = false;
 
-	public static void main(String[] args) {
+	public static void main(String[] args) { 
 		Scanner key = new Scanner(System.in);
 		char key2 = '1';
 		int count = 0, selection;
 		char[][] board = level1.getMap();
 		char[][] board2 = level2.getMap();
 		Scanner input = new Scanner(System.in);
-		System.out.println("Choose guard personality:");
-		System.out.println("-------------------------\n");
-		System.out.println("1 - Rookie");
-		System.out.println("2 - Suspicious");
-		System.out.println("3 - Drunken");
-		System.out.println("4 - Quit");
+		menuInicial(input);
+		GameLoop(key, count, board, board2);
+	}
+
+
+	/**
+	 * menuInicial - for an user choose a guard personality
+	 * @param input - key for user choose
+	 */
+	public static void menuInicial(Scanner input) {
+		int selection;
+		System.out.print("+----------------------------+\n");
+		System.out.println("|  Choose guard personality: |");
+		System.out.print("+----------------------------+\n");
+		System.out.println("|   1 - Rookie               |");
+		System.out.println("|   2 - Suspicious           |");
+		System.out.println("|   3 - Drunken              |");
+		System.out.println("|   4 - Quit                 |");
+		System.out.println("+----------------------------+\n");
 
 		selection = input.nextInt();
 		switch(selection) {
@@ -40,19 +55,20 @@ public class Game {
 		case 3: 
 			Guard.personality="Drunken";
 			break;
+		case 4: 
+			System.exit(0);
 		default:
 			Guard.personality="Rookie";
 			break;
 		}
-		GameLoop(key, count, board, board2);
 	}
 
 
-	/**
-	 * @param key
-	 * @param count
-	 * @param board
-	 * @param board2
+	/** GameLoop - heart of the game. Here we have all the game proccess.
+	 * @param key - key that an user will press
+	 * @param count - counter
+	 * @param board - map of level 1
+	 * @param board2 - map of level 2
 	 */
 	public static void GameLoop(Scanner key, int count, char[][] board, char[][] board2) {
 		char key2;
@@ -67,42 +83,7 @@ public class Game {
 				coord = Character.getPos(board, hero, 10);
 				Character.checkDirection(key2, coord, board, hero);
 				coord = Character.getPos(board, hero, 10);
-				if(Guard.personality=="Rookie") {
-					Guard.movement(board, count);
-					if(count==23) {
-						count=0;
-					}else
-						count++;
-				}else if(Guard.personality=="Drunken") {
-					if(Guard.num_laps==0) {
-						Guard.movement(board, count);
-						if(Guard.reverse==true) {
-							System.out.println("reversing \n");
-							if(count==0) {
-								count=23;
-							}else count--;
-						}else {
-							System.out.println("not reversing \n");
-							if(count==23) {
-								count=0;
-							}else if(Guard.asleep!=true)
-								count++;}
-					}else {
-						System.out.println("num laps: " + Guard.num_laps + "\n");
-						Guard.num_laps--;
-					}
-				}else if(Guard.personality == "Suspicious") {
-					Guard.movement(board, count);
-					Guard.num_laps--;
-					if(Guard.reverse==true) {
-						if(count==0) {
-							count=23;
-						}else count--;
-					}else {
-						if(count==23) {
-							count=0;
-						}else
-							count++;}}
+				count = guardPersonalities(count, board);
 				if(Hero.isAdjacent(coord, board, guard)){
 					GameOver(key, board);
 					return;}
@@ -144,9 +125,57 @@ public class Game {
 		key.close();
 	}
 
+
+	/**
+	 * guardPersonalities - method that deals with guard personalities
+	 * @param count - counter
+	 * @param board - map do level 1
+	 * @return
+	 */
+	public static int guardPersonalities(int count, char[][] board) {
+		if(Guard.personality=="Rookie") {
+			Guard.movement(board, count);
+			if(count==23) {
+				count=0;
+			}else
+				count++;
+		}else if(Guard.personality=="Drunken") {
+			if(Guard.num_laps==0) {
+				Guard.movement(board, count);
+				if(Guard.reverse==true) {
+					System.out.println("reversing \n");
+					if(count==0) {
+						count=23;
+					}else count--;
+				}else {
+					System.out.println("not reversing \n");
+					if(count==23) {
+						count=0;
+					}else if(Guard.asleep!=true)
+						count++;}
+			}else {
+				System.out.println("num laps: " + Guard.num_laps + "\n");
+				Guard.num_laps--;
+			}
+		}else if(Guard.personality == "Suspicious") {
+			Guard.movement(board, count);
+			Guard.num_laps--;
+			if(Guard.reverse==true) {
+				if(count==0) {
+					count=23;
+				}else count--;
+			}else {
+				if(count==23) {
+					count=0;
+				}else
+					count++;}}
+		return count;
+	}
+
  
 	/**
-	 * @param key
+	 * GameOver - end of game one
+	 * @param key 
 	 * @param board
 	 */
 	public static void GameOver(Scanner key, char[][] board) {

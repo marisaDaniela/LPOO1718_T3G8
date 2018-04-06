@@ -1,8 +1,13 @@
 package dkeep.logic;
 
-
+/**
+ * Level1.java - class for level 1
+ * @see Level
+ */
 public class Level1 extends Level{
-
+	/**
+	 * Default contructor for level1
+	 */
 	public Level1() {
 		char[][] map=new char [][]{
 			{'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X', 'X'},
@@ -18,17 +23,5 @@ public class Level1 extends Level{
 
 		};
 		this.setMap(map);
-	}
-
-	@Override
-	public String printGame() {
-		String toPrint = "";
-		for (int j = 0; j < 10; j++) {
-			for (int i = 0; i < 10; i++) {
-					toPrint += (Character.toString(map[i][j]));
-			}
-			toPrint += ("\n");
-		}
-		return toPrint;
 	}
 }

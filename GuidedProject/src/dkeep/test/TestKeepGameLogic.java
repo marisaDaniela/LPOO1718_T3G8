@@ -2,12 +2,18 @@ package dkeep.test;
 
 import static org.junit.Assert.*;
 
+import java.util.ArrayList;
+
 import org.junit.Test;
 
 import dkeep.cli.Game;
 import dkeep.logic.Character;
+import dkeep.logic.Club;
 import dkeep.logic.Coordinates;
 import dkeep.logic.Hero;
+import dkeep.logic.Level;
+import dkeep.logic.Level2;
+import dkeep.logic.Ogre;
 
 public class TestKeepGameLogic {
 
@@ -88,17 +94,15 @@ public class TestKeepGameLogic {
 		Character.checkDirection('c', heroPosition, map, 'H');
 		assertEquals(map[3][1], ' ');
 		heroPosition = Character.getPos(map, 'K', 5);
-	
+
 		assertEquals(heroPosition.getX(), 2);
 		assertEquals(heroPosition.getY(), 1);
-		
+
 		Character.checkDirection('a', heroPosition, map, 'K');
 		heroPosition = Character.getPos(map, 'K', 5);
 		Character.checkDirection('a', heroPosition, map, 'K');
-		
-		assertEquals(map[2][0], 'S');
-		
 
+		assertEquals(map[2][0], 'S');
 	}
 
 	@Test
@@ -117,14 +121,14 @@ public class TestKeepGameLogic {
 		Character.checkDirection('c', heroPosition, map, 'H');
 		assertEquals(map[3][1], ' ');
 		heroPosition = Character.getPos(map, 'K', 5);
-	
+
 		assertEquals(heroPosition.getX(), 2);
 		assertEquals(heroPosition.getY(), 1);
-		
+
 		Character.checkDirection('a', heroPosition, map, 'K');
 		heroPosition = Character.getPos(map, 'K', 5);
 		Character.checkDirection('a', heroPosition, map, 'K');
-		
+
 		assertEquals(map[2][0], 'S');
 		assertTrue(Game.WIN);
 

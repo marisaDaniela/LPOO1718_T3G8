@@ -3,8 +3,18 @@ package dkeep.logic;
 import java.util.Random;
 import dkeep.cli.Game;
 
+/**  
+* Character.java - a class for Character
+*/ 
 public class Character {
 
+	/**
+	 * getPos - finds a position of an character in the board
+	 * @param board current board
+	 * @param mover current character
+	 * @param size size of current board
+	 * @return A Coordinates object
+	 */
 	public static Coordinates getPos(char[][] board, char mover, int size){
 		Coordinates pos= new Coordinates();
 		for(int i = 0; i < size; i++){
@@ -13,13 +23,28 @@ public class Character {
 					pos.setX(i); 
 					pos.setY(j);}}}
 		return pos;}
-
+	
+	/**
+	 * atLever - method to see if an character is close to the lever
+	 * @param x coordinate x of a character
+	 * @param y coordinate y of a character
+	 * @param board current board
+	 * @param sym symbol of a character
+	 * @return A boolean data type
+	 */
 	public static boolean atLever(int x, int y, char[][]board, char sym){
 		if(board[x-1][y] == sym || board[x+1][y] == sym || board[x][y-1] == sym || board[x][y+1] == sym)
 			return true;
 		return false;
 	}
 
+	/**
+	 * checnkDirection - Method to check if an character can move and moves it
+	 * @param input key that an user presses
+	 * @param pos Coordinates
+	 * @param board current board
+	 * @param mover current character
+	 */
 	public static void checkDirection(char input, Coordinates pos, char[][]board, char mover) {
 		int x= pos.getX();
 		int y= pos.getY();
@@ -33,10 +58,11 @@ public class Character {
 	}
 
 	/**
-	 * @param input
-	 * @param board
-	 * @param x
-	 * @param y
+	 * catchKey - Method to hero catch the key
+	 * @param input key that user press
+	 * @param board current board
+	 * @param x coordinate x
+	 * @param y coordinate y
 	 */
 	public static void catchKey(char input, char[][] board, int x, int y) {
 		if(input == 'C' || input == 'c') {
@@ -51,10 +77,11 @@ public class Character {
 				System.out.println("Nothing to do, try again!!");}}
 	
 	/**
-	 * @param input
-	 * @param board
-	 * @param x
-	 * @param y
+	 * catchArm - Method to hero catch the arm
+	 * @param input key that user press
+	 * @param board current board
+	 * @param x Coordenate x
+	 * @param y Coordenate y
 	 */
 	public static void catchArm(char input, char[][] board, int x, int y) {
 		if(input == 'F' || input == 'f') {
@@ -69,10 +96,11 @@ public class Character {
 				System.out.println("Nothing to do, try again!!");}}
 
 	/**
-	 * @param input
-	 * @param board
-	 * @param x
-	 * @param y
+	 * pullLever - Method to hero catch the arm
+	 * @param input key that user press
+	 * @param board current board
+	 * @param x Coordenate x
+	 * @param y Coordenate y
 	 */
 	public static void pullLever(char input, char[][] board, int x, int y) {
 		if(input == 'T' || input == 't') {
@@ -84,11 +112,12 @@ public class Character {
 			else System.out.println("Nothing to do, try again!!");}}
 
 	/**
-	 * @param input
-	 * @param board
-	 * @param mover
-	 * @param x
-	 * @param y
+	 * moveRight - Method for character moves right
+	 * @param input key that user press
+	 * @param board current board
+	 * @param mover current mover
+	 * @param x Coordenate x
+	 * @param y Coordenate y
 	 */
 	public static void moveRight(char input, char[][] board, char mover, int x, int y) {
 		if(input == 'D' || input == 'd'){
@@ -101,11 +130,12 @@ public class Character {
 	}
 
 	/**
-	 * @param input
-	 * @param board
-	 * @param mover
-	 * @param x
-	 * @param y
+	 * moveUp - Method for character moves up
+	 * @param input key that user press
+	 * @param board current board
+	 * @param mover current mover
+	 * @param x Coordenate x
+	 * @param y Coordenate y
 	 */
 	public static void moveUP(char input, char[][] board, char mover, int x, int y) {
 		if(input == 'W' || input == 'w'){
@@ -120,11 +150,12 @@ public class Character {
 		}
 
 	/**
-	 * @param input
-	 * @param board
-	 * @param mover
-	 * @param x
-	 * @param y
+	 * moveDown - Method for character moves down
+	 * @param input key that user press
+	 * @param board current board
+	 * @param mover current mover
+	 * @param x Coordenate x
+	 * @param y Coordenate y
 	 */
 	public static void moveDown(char input, char[][] board, char mover, int x, int y) {
 		if(input == 'S' || input == 's'){
@@ -139,11 +170,12 @@ public class Character {
 	}
 
 	/**
-	 * @param input
-	 * @param board
-	 * @param mover
-	 * @param x
-	 * @param y
+	 * moveLeft - Method for character moves left
+	 * @param input key that user press
+	 * @param board current board
+	 * @param mover current mover
+	 * @param x Coordenate x
+	 * @param y Coordenate y
 	 */
 	public static void moveLeft(char input, char[][] board, char mover, int x, int y) {
 		if(input == 'A' || input == 'a'){	
@@ -158,13 +190,17 @@ public class Character {
 			}else if(mover==Game.hero && board[x][y-1]=='I' && Game.game_flag==2) {
 				board[x][y-1]='S';
 			}else if(mover==Game.hero && board[x][y-1]=='S' && Game.game_flag==2) {
-				System.out.println("END OF GAME\n");
+				System.out.println("END OF GAME\nYOU WIN!!!");
 				Game.flag_move=1;
 				Game.WIN = true;
 			}
 		}
 	}
 
+	/**
+	 * Method to choose a random movement
+	 * @return
+	 */
 	public static char randomDirection() {
 		Random rand = new Random();
 		char move=' ';
@@ -186,20 +222,23 @@ public class Character {
 		return move;
 	}
 
+	/**
+	 * Method for a randomChoice
+	 * @return
+	 */
 	public static int randomChoice() {
 		Random rand = new Random();
 		int choice=rand.nextInt(2) + 1;
 		return choice;
 	}
 
+	/**
+	 * Method for a randomNumberPlays;
+	 * @return
+	 */
 	public static int randomNumberPlays() {
 		Random rand = new Random();
 		int num=rand.nextInt(6) + 2;
 		return num;
 	}
-
-	public static String toString(char c) {
-		return null;
-	}
-
 }

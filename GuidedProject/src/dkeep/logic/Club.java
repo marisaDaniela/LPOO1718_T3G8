@@ -1,6 +1,15 @@
 package dkeep.logic;
 
+/**  
+* Club.java - class for the Club
+* @see Character
+*/ 
 public class Club extends Character{
+	/**
+	 * clubSwing - Method for clubSwing
+	 * @param pos Coordinates 
+	 * @param board2 current board
+	 */
 	public static void clubSwing(Coordinates pos, char[][]board2) {
 		char move= randomDirection();
 		Coordinates position= getPos(board2, '*', 9);
@@ -11,7 +20,7 @@ public class Club extends Character{
 				board2[pos.getX()-1][pos.getY()]='*';
 			}else if(board2[pos.getX()-1][pos.getY()]=='X' || board2[pos.getX()-1][pos.getY()]=='I') {
 				clubSwing(pos, board2);
-			}
+			} 
 			else if(board2[pos.getX()-1][pos.getY()]=='k') {
 				board2[position.getX()][position.getY()]=' ';
 				board2[pos.getX()-1][pos.getY()]='$';
