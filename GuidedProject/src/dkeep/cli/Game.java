@@ -23,8 +23,7 @@ public class Game {
 
 	public static void main(String[] args) { 
 		Scanner key = new Scanner(System.in);
-		char key2 = '1';
-		int count = 0, selection;
+		int count = 0;
 		char[][] board = level1.getMap();
 		char[][] board2 = level2.getMap();
 		Scanner input = new Scanner(System.in);

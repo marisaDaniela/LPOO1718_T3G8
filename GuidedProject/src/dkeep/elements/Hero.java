@@ -38,11 +38,24 @@ public class Hero extends Character{
 		}
 		if(input == 'C' || input == 'c') {
 			if(isAdjacent(coord, board, 'k')){
-				this.rep='K';
+				this.setRep('K');
 				board[1][7]=' ';
 				board[coord.getX()][coord.getY()]='K';
 			}
 		}
+	}
+	/**
+	 * @return the rep
+	 */
+	public char getRep() {
+		return rep;
+	}
+
+	/**
+	 * @param rep the rep to set
+	 */
+	public void setRep(char rep) {
+		this.rep = rep;
 	}
 		
 }

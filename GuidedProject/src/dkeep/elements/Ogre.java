@@ -12,7 +12,7 @@ import dkeep.logic.Coordinates;
  * @see Character
  */
 public class Ogre extends Character {
-	public static ArrayList<Ogre>ogres = new ArrayList();
+	public static ArrayList<Ogre>ogres = new ArrayList<Ogre>();
 
 	/**
 	 * ogreMovement - Method to move an ogre

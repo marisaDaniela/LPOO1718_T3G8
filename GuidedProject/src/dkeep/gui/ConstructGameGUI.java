@@ -1,6 +1,5 @@
 package dkeep.gui;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 
 import javax.swing.JFrame;
@@ -24,6 +23,7 @@ import java.awt.event.MouseMotionListener;
 import java.awt.event.ActionEvent;
 
 public class ConstructGameGUI extends JPanel implements MouseListener, MouseMotionListener {
+	private static final long serialVersionUID = 1L;
 	private static final int HEIGHT = 660;
 	private static final int WIDTH = 640;
 	private JLabel warnings;
@@ -110,7 +110,7 @@ public class ConstructGameGUI extends JPanel implements MouseListener, MouseMoti
 		JLabel lblNewLabel_1 = new JLabel("New label");
 		frame.getContentPane().add(lblNewLabel_1, BorderLayout.WEST);
 
-		JComboBox comboBox = new JComboBox();
+		JComboBox<String> comboBox = new JComboBox<String>();
 		frame.getContentPane().add(comboBox, BorderLayout.CENTER);
 
 		JButton btnNewButton = new JButton("New game");
@@ -118,7 +118,7 @@ public class ConstructGameGUI extends JPanel implements MouseListener, MouseMoti
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				// TODO: complete this action
+			 	// TODO: complete this action
 			}
 		});
 		btnNewButton.setFont(new Font("American Typewriter", Font.PLAIN, 13));
@@ -211,6 +211,13 @@ public class ConstructGameGUI extends JPanel implements MouseListener, MouseMoti
 	public void mouseMoved(MouseEvent e) {
 		// TODO Auto-generated method stub
 
+	}
+
+	/**
+	 * @return the button
+	 */
+	public JButton getButton() {
+		return button;
 	}
 
 }

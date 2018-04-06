@@ -87,7 +87,6 @@ public class StartGameGUI extends JPanel {
 		numberOgres();
 		labels();
 		exitBut();
-		JComboBox<String> guardPersonality = guardPersonalities();	
 
 		gameArea = new JTextArea();
 		gameArea.setWrapStyleWord(true);
@@ -127,7 +126,7 @@ public class StartGameGUI extends JPanel {
 	public JComboBox<String> guardPersonalities() {
 		String[] guardPersonalities = {"Rookie", "Drunken", "Suspicious"};
 
-		JComboBox guardPersonality = new JComboBox(guardPersonalities);
+		JComboBox<String> guardPersonality = new JComboBox<String>(guardPersonalities);
 		guardPersonality.setFont(new Font("American Typewriter", Font.PLAIN, 13));
 		guardPersonality.setBounds(141, 57, 169, 27);
 		Game.getContentPane().add(guardPersonality);

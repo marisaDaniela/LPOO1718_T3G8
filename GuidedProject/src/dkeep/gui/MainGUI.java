@@ -15,7 +15,6 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
-import dkeep.cli.Game;
 
 public class MainGUI {
 	
@@ -64,7 +63,6 @@ public class MainGUI {
 		JButton btnStartGame = new JButton("New Game");
 		btnStartGame.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				StartGameGUI newGame = new StartGameGUI();
 
 			}
 		});

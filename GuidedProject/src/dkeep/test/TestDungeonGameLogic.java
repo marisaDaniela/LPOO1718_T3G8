@@ -5,9 +5,6 @@ import static org.junit.Assert.*;
 import org.junit.Test;
 
 import dkeep.logic.Coordinates;
-import dkeep.logic.GameState;
-import dkeep.logic.Level;
-import dkeep.logic.Level1;
 import dkeep.cli.Game;
 import dkeep.elements.Hero;
 import dkeep.logic.Character;
@@ -120,14 +117,12 @@ public class TestDungeonGameLogic {
 	@Test 
 	public void testMoveToLeverOpenDoors(){
 		Coordinates heroPosition = Character.getPos(map, 'H', 5);
-		Coordinates door = Character.getPos(map, 'I', 5);
 		boolean doorOpen = false;
 
 		Character.checkDirection('S', heroPosition, map, 'H');
 		heroPosition = Character.getPos(map, 'H', 5);
 
 		Character.checkDirection('t', heroPosition, map, 'H');
-		Coordinates doorOpened = Character.getPos(map, 'S', 5);
 
 		if(map[2][0] == 'S') {
 			doorOpen = true;
@@ -148,7 +143,6 @@ public class TestDungeonGameLogic {
 		heroPosition = Character.getPos(map, 'H', 5);
 
 		Character.checkDirection('t', heroPosition, map, 'H');
-		Coordinates doorOpened = Character.getPos(map, 'S', 5);
 
 		if(map[2][0] == 'S') {
 			doorOpen = true;
