@@ -95,7 +95,7 @@ public class Game {
 				}else {
 					if(!insertOgre) {
 						int number =  ((int) (Math.random() * (3 - 1))) + 1;
-						Ogre.insertOgres(board2, number);
+						//Ogre.insertOgres(board2, number);
 						insertOgre = true;}
 					for(int i = 0; i < Ogre.ogres.size(); i++) {
 						Ogre.ogres.get(i);
