@@ -52,9 +52,14 @@ a escrever texto
 
 #### Design of behavioural aspects:
 ![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/final-project/images/behavioural.png)
+
 ### Expected Design Patterns:
+a escrever texto
 
 ### Main Funcionalities:
+
+* The game will allow to players take a part in single or multiplayer games
+* The game will keep scores of a player
 
 
 ### GUI Mockups:
@@ -72,4 +77,9 @@ a escrever texto
 ---
 
 ### Final Expected Tests:
+
+* Test game over
+* Test hero and monsters movement
+* Test saving scores
+* 
 
