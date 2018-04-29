@@ -58,7 +58,9 @@ Aunios is a 2D RPG Game in which our hero goes on an adventure, fighting horribl
 * **Singleton:** to ensures that only one instance of a class is created and provide a global access point to the object.
 * **State:** to evolve from level/map to map; to change sprites accordingly to the motion/action of the character.
 * **Strategy:** so that from one main enemy class, we can have enemies with different behaviours.
+* **Flyweight:** to separate the shared aspects of a non-player character (appearance, animations,...) from the individual aspects (health, position,...). 
 
+And others to be further studied...
 ### Main Funcionalities:
 
 * The game will allow to players take a part in single or multiplayer games
