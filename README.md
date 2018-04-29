@@ -53,12 +53,17 @@ a escrever texto
 ![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/final-project/images/behavioural.png)
 
 ### Expected Design Patterns:
-a escrever texto
+
+* **MVC (Model View Controller):** is the most relevant design pattern, and it is on this principle that the architecture of the program is based. Allows a total isolation between logic and UI components. The View package ensures the UI elements, the package Model stores the data and the functions to manipulate the data and the package Controller receives View statements and commands the Model functions.
+
+* **Singleton:** to ensures that only one instance of a class is created and provide a global access point to the object.
+* **State:** the characters may have differents states that limits their actions. Can be done in every moment of the game.
 
 ### Main Funcionalities:
 
 * The game will allow to players take a part in single or multiplayer games
 * The game will keep scores of a player
+
 
 
 ### GUI Mockups:
