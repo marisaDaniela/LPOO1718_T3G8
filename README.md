@@ -9,7 +9,7 @@
 
 ## Title: Aunios
 
-a escrever texto
+Aunios is a 2D RPG Game in which our hero goes on an adventure, fighting horrible monsters and terrifying enemies, questing for magical objects and facing challenging obstacles in order to save the peaceful village of Aunios from a dreadful fate...
 
 ### UML: Package and class diagram:
 #### Package Diagram:
@@ -54,10 +54,10 @@ a escrever texto
 
 ### Expected Design Patterns:
 
-* **MVC (Model View Controller):** is the most relevant design pattern, and it is on this principle that the architecture of the program is based. Allows a total isolation between logic and UI components. The View package ensures the UI elements, the package Model stores the data and the functions to manipulate the data and the package Controller receives View statements and commands the Model functions.
 
 * **Singleton:** to ensures that only one instance of a class is created and provide a global access point to the object.
-* **State:** the characters may have differents states that limits their actions. Can be done in every moment of the game.
+* **State:** to evolve from level/map to map; to change sprites accordingly to the motion/action of the character.
+* **Strategy:** so that from one main enemy class, we can have enemies with different behaviours.
 
 ### Main Funcionalities:
 
