@@ -43,12 +43,11 @@ a escrever texto
  * **Item:** Class to represents an item of the game;
 
  * **Scores:** Class to represents the scores of the game;
-
- * **Knight:** Class for a Knight object, subclass of hero;
-
- * **Wizard:** Class for a Wizard object, subclass of hero;
-
- * **Soldier:** Class for a Soldier object, subclass of hero
+ 
+ * **Map:** Class to represent the differents levels of the game;
+ 
+ * **Dialog Box:** Class to represent the story during the game;
+ 
 
 #### Design of behavioural aspects:
 ![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/final-project/images/behavioural.png)
