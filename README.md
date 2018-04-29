@@ -68,15 +68,7 @@ a escrever texto
 
 ### GUI Mockups:
 
-#### Start
-
-#### Instructions
-
-#### Save
-
-#### Game
-
-#### GameOver
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/final-project/images/mockup.png)
 
 ---
 
@@ -89,6 +81,6 @@ a escrever texto
 * Test monster dies with collision with projectile
 * Test hero dies
 * Test hero wins
-* Test passing level
+* Test achieves goal
 * Test hero loses a life in collision with monster
 * Test hero gains points when kills a monster
