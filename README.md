@@ -7,7 +7,7 @@
 * Leonor Ribeiro e Sousa Mendes de Freitas, up201207603, up201207603@fe.up.pt
 * Marisa Daniela Quintal Oliveira, up201308594, up201308594@fe.up.pt
 
-## Title: Haunted Aunios
+## Title: Aunios
 
 a escrever texto
 
@@ -78,8 +78,13 @@ a escrever texto
 
 ### Final Expected Tests:
 
-* Test game over
 * Test hero and monsters movement
 * Test saving scores
-* 
-
+* Test catching items
+* Test shooting a projectile to kill monsters
+* Test monster dies with collision with projectile
+* Test hero dies
+* Test hero wins
+* Test passing level
+* Test hero loses a life in collision with monster
+* Test hero gains points when kills a monster
