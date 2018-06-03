@@ -90,3 +90,7 @@ Doing this kind of game takes more time than expected. Our major difficulty was 
 
 ![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/end.png)
 
+### Documentation link
+
+https://marisadaniela.github.io/LPOO1718_T3G8/doc/index
+
