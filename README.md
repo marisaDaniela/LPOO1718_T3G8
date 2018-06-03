@@ -8,21 +8,16 @@ Final Project for the class Oriented Objects Programming Language of MIEIC at FE
 
 ## Title:  Super Mario
 
-This project is a clone of the original platform game MarioBros. 
+This project is a clone of the original platform game Super Mario Bros. It is built in Java using the LibGDX game development library.
+
 
 ### Setup Instructions:
-
-#### Project
 
 * Download this Repository on this branch and unzip it
 * Open android studio and do Import project (Eclipse ADT,Gradle, etc).
 * Then select folder unzipped
 * Then click OK
 
-#### App
-
-
- 
 ---
 
 ### Development documentation:
@@ -36,12 +31,20 @@ This project is a clone of the original platform game MarioBros.
 
 #### Design Patterns used
 
-
-#### Relevant Design Decisions
+* Singleton: classes Play and SuperMario have only one instance, and provide a global point of access to it. 
+* State: the Mario's behavior is governed by states. Besides, characters can have multiple states that limits their actions (ex: JUMPING, STANDING...) to be executed in any moment of the game. 
+* Observer: Are implemented observers to detect input from user and detection of collisions between characters in the game.
+* Stategy: Different kind of characters (Enemies and Mario) execute different actions (JUMPING, STANDING...). Each character can execute them with different algorithms. 
 
 #### Major Difficulties 
 
+Doing this kind of game takes more time than expected. Our major difficulty was to set up all the software required to make the game. After that, the worst part was starting the implementation. When the start was over, it became easier and more fascinating.
+
 #### Lessons Learned
+
+* Making this kind of game is quite interesting and calls for more to achieve better results.
+* Doing this kind of game takes more time than expected.
+
 
 #### Overall Time Spent Developing
 
