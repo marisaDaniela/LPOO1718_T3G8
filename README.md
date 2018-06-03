@@ -8,8 +8,7 @@ Final Project for the class Oriented Objects Programming Language of MIEIC at FE
 
 ## Title:  Super Mario
 
-This project is a clone of the original platform game Super Mario Bros. It is built in Java using the LibGDX game development library.
-
+This project is a clone of the original platform game Super Mario Bros. It is built in Java using the LibGDX game development library. The sprites used for this game are from https://www.spriters-resource.com/nes/supermariobros/sheet/52571/
 
 ### Setup Instructions:
 
@@ -26,14 +25,18 @@ This project is a clone of the original platform game Super Mario Bros. It is bu
 
 ##### Package Diagram
 
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/package.png)
+
 ##### Class Diagram
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/uml.png)
 
 #### Design Patterns used
 
-* Singleton: classes Play and SuperMario have only one instance, and provide a global point of access to it. 
-* State: the Mario's behavior is governed by states. Besides, characters can have multiple states that limits their actions (ex: JUMPING, STANDING...) to be executed in any moment of the game. 
-* Observer: Are implemented observers to detect input from user and detection of collisions between characters in the game.
-* Stategy: Different kind of characters (Enemies and Mario) execute different actions (JUMPING, STANDING...). Each character can execute them with different algorithms. 
+* **Singleton:** classes Play and SuperMario have only one instance, and provide a global point of access to it. 
+* **State:** the Mario's behavior is governed by states. Besides, characters can have multiple states that limits their actions (ex: JUMPING, STANDING...) to be executed in any moment of the game. 
+* **Observer:** Are implemented observers to detect input from user and detection of collisions between characters in the game.
+* **Stategy:** Different kind of characters (Enemies and Mario) execute different actions (JUMPING, STANDING...). Each character can execute them with different algorithms. 
 
 #### Major Difficulties 
 
