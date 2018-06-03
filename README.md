@@ -26,7 +26,6 @@ This project is a clone of the original platform game Super Mario Bros. It is bu
 
 ##### Package Diagram
 
-
 ##### Class Diagram
 
 #### Design Patterns used
@@ -59,3 +58,32 @@ Doing this kind of game takes more time than expected. Our major difficulty was 
 ---
 
 ### User manual
+
+* When you start the game this will appear:
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/begin.png)
+
+* Then Mario can eat a mushroom and grow...
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/mushroom.png)
+
+* Mario can run, and jump...
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/jump.png)
+
+* But danger is in every corner. If Mario touches an enemy, he becomes smaller:
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/smaller.png)
+
+* And if he touches another enemy, he dies!
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/die.png)
+
+* Oh no, game over...
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/gameOver.png)
+
+* But let's start again, and now Mario will achieve the end of the game! 
+
+![My image](https://github.com/marisaDaniela/LPOO1718_T3G8/blob/finalRelease/images/end.png)
+
