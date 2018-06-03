@@ -52,7 +52,7 @@ Doing this kind of game takes more time than expected. Our major difficulty was 
 
 * In overall i've spent about 100 hours developping this projects: 
 - 21 hours on class.
-- About 80 hours outside with major distribution in the last 3 weeks.
+- About 80 hours outside with major distribution in the last 2 weeks.
 
 #### Work Distribution Amongst Team Members
 
